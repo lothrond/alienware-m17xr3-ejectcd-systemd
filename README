@@ -1,0 +1,29 @@
+alienware-m17xr3-ejectcd-systemd
+================================
+
+Fix the ejectcd button on Alienware M17xR3 laptops using systemd.
+
+-----------------------------------------------------------------
+
+This is a patch that will get you commit cfd54b6 of systemd.
+
+At the time of this writing, this commit is only in the master branch.
+Also, the latest systemd release is v244, 
+
+This patch can be applied to 60-keyboard.hwdb (i.e. /lib/udev/hwdb.d/60-keyboad.hwdb)
+by issuing something like: 
+    
+	sudo patch 60-keyboard.hwdb /path/to/60-keyboard.hwdb.alienware-M17xR3.patch
+
+After applying the patch, dont forget to upadate your hwdb.bin by issuing something like:
+
+    sudo systemd-hwdb update
+    sudo udevadm trigger /dev/input/event4
+
+(Check with your distribution for information on reloading this database, as these commmands will be different fore some)
+
+Now, to see if the patch applied correctly, one can issue something like:
+
+	sudo udevadm test /sys/class/input/event4 | grep KEYBOARD_KEY_89
+
+Or press the button. :)
