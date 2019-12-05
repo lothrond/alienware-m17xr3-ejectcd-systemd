@@ -8,7 +8,6 @@ Fix the ejectcd button on Alienware M17xR3 laptops using systemd.
 This is a patch that will get you commit `cfd54b6` of systemd.
 
 At the time of this writing, this commit is only in the `master` branch, and the latest systemd release is `v244`.
-Meaning, If you would like your button to work right now, apply this patch.
 
 ## Installation
 
