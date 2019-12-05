@@ -15,12 +15,12 @@ by issuing something like:
     
 	sudo patch 60-keyboard.hwdb /path/to/60-keyboard.hwdb.alienware-M17xR3.patch
 
-After applying the patch, dont forget to upadate your hwdb.bin by issuing something like:
+After applying the patch, dont forget to update your hwdb.bin by issuing something like:
 
     sudo systemd-hwdb update
     sudo udevadm trigger /dev/input/event4
 
-(Check with your distribution for information on reloading this database, as these commmands will be different fore some)
+(Check with your distribution for information on reloading this database, as these commmands will be different for some).
 
 Now, to see if the patch applied correctly, one can issue something like:
 
