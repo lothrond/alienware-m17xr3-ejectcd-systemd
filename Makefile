@@ -5,10 +5,12 @@ DEST := /lib/udev/hwdb.d/60-keyboard.hwdb
 apply: $(SRC)
 	patch $(DEST) $(SRC)
 	systemd-hwdb update
-	udevadm trigger /dev/input/event4
+	udevadm control --reload-rules
+	udevadm trigger
 
 .PHONY: remove
 remove:
-	patch -R $(DEST) $(SRC)
+	patch -R $(DEST) $(SRC) || rm /lib/udev/hwdb.d/60-keyboard.hwdb.rej
 	systemd-hwdb update
-	udevadm trigger /dev/input/event4
+	udevadm control --reload-rules
+	udevadm trigger
